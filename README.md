@@ -1,2 +1,2 @@
-# Kifuwarabe_WCSC26
-きふわらべ、第２６回世界コンピュータ将棋選手権出場バージョン☆（＾▽＾）
+# Kifuwarapery
+Visual Studio 2015 ではコンパイルできない Apery を読むんだぜ☆（＾ｑ＾）
