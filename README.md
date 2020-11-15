@@ -1,14 +1,10 @@
 # Kifuwarapery
 
-Visual Studio 2015 ではコンパイルできない Apery(apery-SDT3) の ソースコードの Readme.txt を読むんだぜ☆（＾ｑ＾）  
+きふわらぷりー。 いわゆる きふわるべ☆（＾～＾）  
 
-Windows でソースからビルドするなら `MinGW64` を使うといいらしいぜ☆（＾～＾）  
-[MinGW-w64のダウンロードとインストール](https://www.javadrive.jp/cstart/install/index6.html)  
+Apery-SDT3 がベースで、本来 Visual Studio ではコンパイルできないんだが、  
+わたしは改造して Visual Studio で動かすようにしたらしいぜ☆（＾～＾）  
 
-## Run
-
-```shell
-# Example
-cd C:\Users\むずでょ\Documents\GitHub\kifuwarabe-collection\Kifuwarabe_WCSC26\Kifuwarapery
-
-```
+* `Kifuwarapery.exe` と同じディレクトリーに `20151105` というディレクトリーを必ず作ってください。対局開始時に その中に評価値ファイルが動的に作成されます。  
+  * しかし、この部分、わたしがいじってしまったので、かなり時間がかかるぜ☆（＾～＾）
+    * でもこの自動生成は１回やれば２回目から要らないはずなんで、対局前に１回やっておけだぜ☆（＾～＾）
