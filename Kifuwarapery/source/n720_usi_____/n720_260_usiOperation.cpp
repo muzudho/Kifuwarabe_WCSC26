@@ -106,7 +106,7 @@ Move UsiOperation::usiToMoveDebug(const Position& GetPos, const std::string& mov
 			return ml.GetMove();
 		}
 	}
-	return Move::GetMoveNone();
+	return g_MOVE_NONE; // Move::GetMoveNone();
 }
 
 
@@ -116,7 +116,7 @@ Move UsiOperation::csaToMoveDebug(const Position& GetPos, const std::string& mov
 			return ml.GetMove();
 		}
 	}
-	return Move::GetMoveNone();
+	return g_MOVE_NONE; // Move::GetMoveNone();
 }
 #endif
 

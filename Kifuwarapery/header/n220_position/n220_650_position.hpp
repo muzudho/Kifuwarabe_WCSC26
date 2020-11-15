@@ -21,6 +21,7 @@
 #include "../n220_position/n220_350_stateInfo.hpp"
 #include "../n220_position/n220_400_evalList.hpp"
 #include "../n220_position/n220_640_utilAttack.hpp"
+#include <cassert>
 
 
 using StateStackPtr = std::unique_ptr<std::stack<StateInfo> >;
@@ -166,7 +167,8 @@ public:
 
 	template<const Color CLR>
 	FORCE_INLINE Square GetKingSquare() const {
-		assert(m_kingSquare_[CLR] == this->GetBbOf<CLR>(N08_King).GetFirstOneFromI9());
+		// assert(m_kingSquare_[CLR] == this->GetBbOf<CLR>(N08_King).GetFirstOneFromI9());
+		assert(m_kingSquare_[CLR] == this->GetBbOf10(N08_King).GetFirstOneFromI9());
 		return m_kingSquare_[CLR];
 	}
 	FORCE_INLINE Square GetKingSquare(const Color c) const {
