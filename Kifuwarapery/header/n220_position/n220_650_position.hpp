@@ -21,6 +21,7 @@
 #include "../n220_position/n220_350_stateInfo.hpp"
 #include "../n220_position/n220_400_evalList.hpp"
 #include "../n220_position/n220_640_utilAttack.hpp"
+#include <cassert>
 
 
 using StateStackPtr = std::unique_ptr<std::stack<StateInfo> >;
@@ -69,8 +70,10 @@ public:
 
 	Bitboard GetBbOf20(const PieceType pt1, const PieceType pt2) const;
 
+	// template<Color CLR>
+	// Bitboard Position::GetBbOf30(const PieceType pt1, const PieceType pt2) const
 	template<Color CLR>
-	Bitboard Position::GetBbOf30(const PieceType pt1, const PieceType pt2) const
+	Bitboard GetBbOf30(const PieceType pt1, const PieceType pt2) const
 	{
 		return this->GetBbOf20(pt1, pt2) & this->GetBbOf10(CLR);
 	}
@@ -168,7 +171,8 @@ public:
 		return m_kingSquare_[CLR];
 	}
 	FORCE_INLINE Square GetKingSquare(const Color c) const {
-		assert(m_kingSquare_[c] == this->GetBbOf(N08_King, c).GetFirstOneFromI9());
+		assert(m_kingSquare_[c] == this->GetBbOf20(N08_King, c).GetFirstOneFromI9());
+		// assert(m_kingSquare_[c] == this->GetBbOf(N08_King, c).GetFirstOneFromI9());
 		return m_kingSquare_[c];
 	}
 

@@ -78,9 +78,12 @@ public:
 
 public:// もともと本当はプライベート・メソッド☆
 
+	// template <bool IsDrop>
+	// void NextmoveEvent::ScoreNonCapturesMinusPro() {
+	//
 	//template <bool IsDrop> void ScoreNonCapturesMinusPro();
 	template <bool IsDrop>
-	void NextmoveEvent::ScoreNonCapturesMinusPro() {
+	void ScoreNonCapturesMinusPro() {
 		for (MoveStack* curr = GetCurrMove(); curr != GetLastMove(); ++curr) {
 			const Move move = curr->m_move;
 			curr->m_score =
