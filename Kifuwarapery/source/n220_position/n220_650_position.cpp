@@ -1623,21 +1623,21 @@ bool Position::IsOK() const {
 
 	int failedStep = 0;
 	if (debugBitboards) {
-		if ((GetBbOf(Black) & GetBbOf(White)).Exists1Bit()) {
+		if ((GetBbOf10(Black) & GetBbOf10(White)).Exists1Bit()) {
 			goto incorrect_position;
 		}
-		if ((GetBbOf(Black) | GetBbOf(White)) != GetOccupiedBB()) {
+		if ((GetBbOf10(Black) | GetBbOf10(White)) != GetOccupiedBB()) {
 			goto incorrect_position;
 		}
-		if ((GetBbOf(N01_Pawn) ^ GetBbOf(N02_Lance) ^ GetBbOf(N03_Knight) ^ GetBbOf(N04_Silver) ^ GetBbOf(N05_Bishop) ^
-			GetBbOf(N06_Rook) ^ GetBbOf(N07_Gold) ^ GetBbOf(N08_King) ^ GetBbOf(N09_ProPawn) ^ GetBbOf(N10_ProLance) ^
-			GetBbOf(N11_ProKnight) ^ GetBbOf(N12_ProSilver) ^ GetBbOf(N13_Horse) ^ GetBbOf(N14_Dragon)) != GetOccupiedBB())
+		if ((GetBbOf10(N01_Pawn) ^ GetBbOf10(N02_Lance) ^ GetBbOf10(N03_Knight) ^ GetBbOf10(N04_Silver) ^ GetBbOf10(N05_Bishop) ^
+			GetBbOf10(N06_Rook) ^ GetBbOf10(N07_Gold) ^ GetBbOf10(N08_King) ^ GetBbOf10(N09_ProPawn) ^ GetBbOf10(N10_ProLance) ^
+			GetBbOf10(N11_ProKnight) ^ GetBbOf10(N12_ProSilver) ^ GetBbOf10(N13_Horse) ^ GetBbOf10(N14_Dragon)) != GetOccupiedBB())
 		{
 			goto incorrect_position;
 		}
 		for (PieceType pt1 = N01_Pawn; pt1 < g_PIECETYPE_NUM; ++pt1) {
 			for (PieceType pt2 = pt1 + 1; pt2 < g_PIECETYPE_NUM; ++pt2) {
-				if ((GetBbOf(pt1) & GetBbOf(pt2)).Exists1Bit()) {
+				if ((GetBbOf10(pt1) & GetBbOf10(pt2)).Exists1Bit()) {
 					goto incorrect_position;
 				}
 			}
@@ -1647,13 +1647,13 @@ bool Position::IsOK() const {
 	++failedStep;
 	if (debugKingCount) {
 		int kingCount[g_COLOR_NUM] = { 0, 0 };
-		if (GetBbOf(N08_King).PopCount() != 2) {
+		if (GetBbOf10(N08_King).PopCount() != 2) {
 			goto incorrect_position;
 		}
-		if (!GetBbOf(N08_King, Black).IsOneBit()) {
+		if (!GetBbOf20(N08_King, Black).IsOneBit()) {
 			goto incorrect_position;
 		}
-		if (!GetBbOf(N08_King, White).IsOneBit()) {
+		if (!GetBbOf20(N08_King, White).IsOneBit()) {
 			goto incorrect_position;
 		}
 		for (Square sq = I9; sq < SquareNum; ++sq) {
@@ -1673,9 +1673,9 @@ bool Position::IsOK() const {
 	if (debugKingCapture) {
 		// 相手玉を取れないことを確認
 		const Color us = GetTurn();
-		const Color them = ConvColor::OPPOSITE_COLOR10(us);
+		const Color them = ConvColor::OPPOSITE_COLOR10b(us);
 		const Square ksq = GetKingSquare(them);
-		if (this->GetAttackersTo(us, ksq, g_nullBitboard).Exists1Bit()) {
+		if (this->GetAttackersTo_clr(us, ksq, g_nullBitboard).Exists1Bit()) {
 			goto incorrect_position;
 		}
 	}
@@ -1711,7 +1711,7 @@ bool Position::IsOK() const {
 				}
 			}
 			else {
-				if (!g_setMaskBb.IsSet( &GetBbOf(ConvPiece::TO_PIECE_TYPE10(pc), ConvPiece::TO_COLOR10(pc)), sq) ) {
+				if (!g_setMaskBb.IsSet( &GetBbOf20(ConvPiece::TO_PIECE_TYPE10(pc), ConvPiece::TO_COLOR10(pc)), sq) ) {
 					goto incorrect_position;
 				}
 			}

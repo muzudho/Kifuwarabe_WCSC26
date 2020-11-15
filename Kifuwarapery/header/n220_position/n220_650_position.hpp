@@ -21,7 +21,6 @@
 #include "../n220_position/n220_350_stateInfo.hpp"
 #include "../n220_position/n220_400_evalList.hpp"
 #include "../n220_position/n220_640_utilAttack.hpp"
-#include <cassert>
 
 
 using StateStackPtr = std::unique_ptr<std::stack<StateInfo> >;
