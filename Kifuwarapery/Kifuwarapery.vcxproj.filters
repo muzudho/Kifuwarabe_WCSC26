@@ -1629,4 +1629,9 @@
       <Filter>source\n883_nodeType</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <Filter>source</Filter>
+    </None>
+  </ItemGroup>
 </Project>

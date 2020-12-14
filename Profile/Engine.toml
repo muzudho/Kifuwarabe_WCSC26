@@ -1,0 +1,7 @@
+[Engine]
+
+# 将棋ソフトの表示名です。 後ろにバージョン番号が付くなどの加工があることがあります。
+Name = "Kifuwarube"
+
+# 将棋ソフトの制作者名です。
+Author = "Satoshi TAKAHASHI"
